@@ -11,7 +11,9 @@ export const createJournalEntry = /* GraphQL */ `
       title
       content
       date
+      tripDate
       imageUrl
+      owner
       createdAt
       updatedAt
       __typename
@@ -28,7 +30,9 @@ export const updateJournalEntry = /* GraphQL */ `
       title
       content
       date
+      tripDate
       imageUrl
+      owner
       createdAt
       updatedAt
       __typename
@@ -45,7 +49,9 @@ export const deleteJournalEntry = /* GraphQL */ `
       title
       content
       date
+      tripDate
       imageUrl
+      owner
       createdAt
       updatedAt
       __typename

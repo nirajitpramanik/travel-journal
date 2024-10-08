@@ -1,17 +1,27 @@
 // src/App.js
-import React from 'react';
+import React, { useState } from 'react';
 import JournalEntryForm from './JournalEntryForm';
 import JournalEntries from './JournalEntries';
-import './App.css'; // You can style your components here
+import './App.css'; // Ensure to import your CSS file
 
-function App() {
+const App = ({ signOut, user }) => {
+  const [newEntry, setNewEntry] = useState(null);
+
   return (
     <div className="App">
-      <h1>Travel Journal</h1>
-      <JournalEntryForm />
-      <JournalEntries />
+      <header className="App-header">
+        <h1>Welcome to your journal, {user.username}</h1>
+        <div className="navbar">
+          <a href="/welcome" className="nav-link">Welcome</a>
+          <button className="sign-out-button" onClick={signOut}>Sign Out</button>
+        </div>
+      </header>
+      <main>
+        <JournalEntryForm onNewEntry={setNewEntry} user={user} />
+        <JournalEntries newEntry={newEntry} user={user} />
+      </main>
     </div>
   );
-}
+};
 
 export default App;

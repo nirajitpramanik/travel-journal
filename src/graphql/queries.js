@@ -8,7 +8,9 @@ export const getJournalEntry = /* GraphQL */ `
       title
       content
       date
+      tripDate
       imageUrl
+      owner
       createdAt
       updatedAt
       __typename
@@ -27,7 +29,9 @@ export const listJournalEntries = /* GraphQL */ `
         title
         content
         date
+        tripDate
         imageUrl
+        owner
         createdAt
         updatedAt
         __typename

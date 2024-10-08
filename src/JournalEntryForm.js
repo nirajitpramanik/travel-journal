@@ -1,62 +1,71 @@
 // src/JournalEntryForm.js
 import React, { useState } from 'react';
-import { API, Storage } from 'aws-amplify';
+import { generateClient } from 'aws-amplify/api';
 import { createJournalEntry } from './graphql/mutations';
+import './JournalEntryForm.css';
 
-const JournalEntryForm = () => {
+const client = generateClient();
+
+const JournalEntryForm = ({ onNewEntry, user }) => { // Make sure to pass user prop
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [image, setImage] = useState(null);
-
-  const handleImageChange = (event) => {
-    setImage(event.target.files[0]);
-  };
+  const [tripDate, setTripDate] = useState(''); // State for trip date
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Upload image to S3 if selected
-    let imageUrl = null;
-    if (image) {
-      const uploadedImage = await Storage.put(image.name, image);
-      imageUrl = uploadedImage.key; // Store the image key in DynamoDB
-    }
-
+  
     const journalEntry = {
       title,
       content,
       date: new Date().toISOString(),
-      imageUrl,
+      tripDate, // Ensure this is set properly
+      owner: user?.username // Set the owner field (ensure user is defined)
     };
-
-    await API.graphql({
-      query: createJournalEntry,
-      variables: { input: journalEntry },
-    });
-
-    // Reset the form
-    setTitle('');
-    setContent('');
-    setImage(null);
-  };
+  
+    try {
+      const result = await client.graphql({
+        query: createJournalEntry,
+        variables: { input: journalEntry },
+      });
+  
+      // Clear the form fields
+      setTitle('');
+      setContent('');
+      setTripDate(''); // Reset trip date
+      
+      // Notify the parent component about the new entry
+      onNewEntry(result.data.createJournalEntry); 
+    } catch (error) {
+      console.error('Error creating journal entry: ', error);
+    }
+  };  
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="journal-entry-form">
       <input
         type="text"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required
+        className="form-input"
       />
       <textarea
         placeholder="Content"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         required
+        className="form-textarea"
       />
-      <input type="file" onChange={handleImageChange} />
-      <button type="submit">Add Entry</button>
+      <input
+        type="date"
+        placeholder="Trip Date"
+        value={tripDate}
+        onChange={(e) => setTripDate(e.target.value)}
+        required
+        className="form-input"
+      />
+      <button type="submit" className="form-submit-button">Add Entry</button>
     </form>
   );
 };

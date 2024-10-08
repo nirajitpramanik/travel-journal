@@ -1,37 +1,75 @@
-/* src/App.css */
+body {
+  background-color: #121212;
+  color: #f0f0f0;
+  font-family: 'Roboto', sans-serif;
+}
 
 .App {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
 }
 
-form {
+.App-header {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 2px solid #4CAF50;
+  margin-bottom: 30px;
 }
 
-input,
-textarea {
-  margin-bottom: 10px;
-  padding: 10px;
-  font-size: 16px;
+.App-header h1 {
+  font-size: 2.5rem;
+  color: #4CAF50;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-button {
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px; /* Space between nav items */
+}
+
+.nav-link {
+  color: #4CAF50; /* Color for the nav links */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold;
+  padding: 10px 15px; /* Padding around links */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(76, 175, 80, 0.2); /* Light background on hover */
+}
+
+.sign-out-button {
+  background-color: #4CAF50;
+  color: #121212;
   border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
-button:hover {
-  background-color: #0056b3;
+.sign-out-button:hover {
+  background-color: #45a049;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
 }
 
-h3 {
-  margin-top: 20px;
+main {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,13 +1,30 @@
 {
   "api": {
     "traveljournal": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "traveljournal7b9969ac"
+        }
+      ],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authtraveljournal7b9969ac"
+              }
+            }
+          ],
           "defaultAuthentication": {
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
+              "apiKeyExpirationDate": "2025-10-08T13:38:24.527Z",
+              "apiKeyExpirationDays": 365,
+              "description": "traveljournal"
             },
             "authenticationType": "API_KEY"
           }
