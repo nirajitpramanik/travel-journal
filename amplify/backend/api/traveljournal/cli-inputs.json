@@ -4,7 +4,8 @@
     "apiName": "traveljournal",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "AWS_IAM"
+      "mode": "API_KEY",
+      "expirationTime": 7
     }
   }
 }

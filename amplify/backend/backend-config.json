@@ -6,7 +6,10 @@
         "authConfig": {
           "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
-            "authenticationType": "AWS_IAM"
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            },
+            "authenticationType": "API_KEY"
           }
         }
       },
@@ -45,6 +48,24 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_S3Triggerf86a05af_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Triggerf86a05af"
+        }
+      ]
+    },
+    "AMPLIFY_function_S3Triggerf86a05af_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Triggerf86a05af"
+        }
+      ]
     }
   },
   "storage": {
