@@ -23,7 +23,7 @@ const JournalEntries = () => {
           <p>{entry.content}</p>
           <p>{entry.date}</p>
           {entry.imageUrl && (
-            <img src={`https://your-bucket-name.s3.amazonaws.com/${entry.imageUrl}`} alt={entry.title} />
+            <img src={`https://traveljournal84db5989208d4f25800f44adde11050a61c0e-dev.s3.amazonaws.com/${entry.imageUrl}`} alt={entry.title} />
           )}
         </div>
       ))}
