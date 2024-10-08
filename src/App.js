@@ -12,7 +12,7 @@ const App = ({ signOut, user }) => {
       <header className="App-header">
         <h1>Welcome to your journal, {user.username}</h1>
         <div className="navbar">
-          <a href="/welcome" className="nav-link">Welcome</a>
+          <a href="/welcome" className="nav-link">Home</a>
           <button className="sign-out-button" onClick={signOut}>Sign Out</button>
         </div>
       </header>
