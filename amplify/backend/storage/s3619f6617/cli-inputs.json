@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3619f6617",
+  "policyUUID": "619f6617",
+  "bucketName": "traveljournal84db5989208d4f25800f44adde11050a",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Triggerf86a05af",
+  "groupAccess": {}
+}

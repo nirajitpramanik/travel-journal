@@ -1,0 +1,7 @@
+type TravelEntry @model {
+  id: ID!
+  destination: String!
+  description: String!
+  date: String!
+  imageUrl: String
+}

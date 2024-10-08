@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-traveljournal-dev-61c0e-authRole",
+      "UnauthRoleArn": "arn:aws:iam::010438470891:role/amplify-traveljournal-dev-61c0e-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::010438470891:role/amplify-traveljournal-dev-61c0e-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-traveljournal-dev-61c0e-deployment",
+      "UnauthRoleName": "amplify-traveljournal-dev-61c0e-unauthRole",
+      "StackName": "amplify-traveljournal-dev-61c0e",
+      "StackId": "arn:aws:cloudformation:ap-south-1:010438470891:stack/amplify-traveljournal-dev-61c0e/7c33b3a0-856c-11ef-90bf-02029e1fe1db",
+      "AmplifyAppId": "d289a1s6c9stis"
+    },
+    "categories": {
+      "auth": {
+        "traveljournal7b9969ac": {}
+      }
+    }
+  }
+}
