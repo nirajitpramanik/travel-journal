@@ -2,18 +2,20 @@
 import React, { useEffect, useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
 import { listJournalEntries } from './graphql/queries';
-import { deleteJournalEntry } from './graphql/mutations'; // Ensure this import is present
+import { deleteJournalEntry } from './graphql/mutations';
 import './JournalEntries.css';
 
 const client = generateClient();
 
-const JournalEntries = ({ newEntry, user }) => { // Ensure user is passed in props
+const JournalEntries = ({ newEntry, user }) => {
   const [entries, setEntries] = useState([]);
 
   const fetchEntries = async () => {
     try {
       const entryData = await client.graphql({ query: listJournalEntries });
-      setEntries(entryData.data.listJournalEntries.items);
+      // Filter entries for the current user
+      const userEntries = entryData.data.listJournalEntries.items.filter(entry => entry.owner === user.username);
+      setEntries(userEntries);
     } catch (error) {
       console.error('Error fetching entries:', error);
     }
@@ -47,7 +49,7 @@ const JournalEntries = ({ newEntry, user }) => { // Ensure user is passed in pro
         <div key={entry.id} className="journal-entry">
           <h3>{entry.title}</h3>
           <p>{entry.content}</p>
-          <p className="entry-trip-date">Trip Date: {new Date(entry.tripDate).toLocaleDateString()}</p> {/* Show trip date */}
+          <p className="entry-trip-date">Trip Date: {new Date(entry.tripDate).toLocaleDateString()}</p>
           <p className="entry-date">{new Date(entry.date).toLocaleString()}</p>
           <button onClick={() => handleDelete(entry.id)} className="delete-button">Delete</button>
         </div>
